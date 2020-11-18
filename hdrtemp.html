@@ -1,0 +1,213 @@
+<!DOCTYPE HTML> 
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+--> 
+<html> 
+    <head> 
+        <title>Generic - Phantom by HTML5 UP</title>         
+        <meta charset="utf-8"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/> 
+        <link rel="stylesheet" href="assets/css/main.css"/> 
+        <noscript>
+            <link rel="stylesheet" href="assets/css/noscript.css"/>
+        </noscript>         
+    </head>     
+    <body class="is-preload"> 
+        <!-- Wrapper -->         
+        <div id="wrapper"> 
+            <!-- Header -->             
+            <header id="header"> 
+                <div class="inner"> 
+                    <!-- Logo -->                     
+                    <a href="index.html" class="logo">  <span class="symbol"><img src="images/logo.svg" alt=""/></span><span class="title">Phantom</span>  </a> 
+                    <!-- Nav -->                     
+                    <nav> 
+                        <ul> 
+                            <li>
+                                <a href="#menu">Menu</a>
+                            </li>                             
+                        </ul>                         
+                    </nav>                     
+                </div>                 
+            </header>             
+            <!-- Menu -->             
+            <nav id="menu"> 
+                <h2>Menu</h2> 
+                <ul> 
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>                     
+                    <li>
+                        <a href="generic.html">Ipsum veroeros</a>
+                    </li>                     
+                    <li>
+                        <a href="generic.html">Tempus etiam</a>
+                    </li>                     
+                    <li>
+                        <a href="generic.html">Consequat dolor</a>
+                    </li>                     
+                    <li>
+                        <a href="elements.html">Elements</a>
+                    </li>                     
+                </ul>                 
+            </nav>             
+            <!-- Main -->             
+            <div id="main">
+                <div class="inner">
+                    <h1></h1>
+                    <h1>Handling HDR videos properly</h1>
+                    <span class="image main"><span style="font-size: 1.1em; font-weight: 900; letter-spacing: 0.35em; text-transform: uppercase;">Motivation</span></span>
+                    <p>As HDR is already been widely used, there haven&apos;t been lots of online information about how to read/write HDR videos properly. Especially when it comes to the wide color gamut and transfer functions. In this article, I would like to organize the information that I can find as well as my experience. As I am still trying to figure out the entire thing, I am only making notes of my understanding, and certainly, there will be mistakes. Please do point out if you find one. I hope you find this post helpful in certain ways.</p>
+                    <h2>Introduction-HDR, transfer function, wide color gamut, and standards.</h2>
+                    <ol>
+                        <li>
+                            <b>High-dynamic-range video</b>(
+                            <b>HDR video</b>)
+                        </li>
+                    </ol>
+                    <blockquote>
+                        <b>High-dynamic-range video</b>(
+                        <b>HDR video</b>) is video having a
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Dynamic_range" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">dynamic range</a>greater than that of
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Standard-dynamic-range_video" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">standard-dynamic-range video</a>(SDR video).
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-DisplayHDR2015BBC-1" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[1]</a>
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-2" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[2]</a>HDR video involves capture, production, content/encoding, and display. HDR capture and displays
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-VESADisplayHDR-3" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[3]</a>are capable of brighter whites and deeper blacks.
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-4" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[4]</a>To accommodate this, HDR encoding standards allow for a higher maximum luminance and use at least a 10-bit dynamic range (color depth, compared to 8-bit for non-professional and 10-bit for professional SDR video
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-5" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[5]</a>) in order to maintain precision across this extended range.
+                        <sup data-text="" data-url="https://en.wikipedia.org/wiki/High-dynamic-range_video" data-numero="1" data-draft-node="inline" data-draft-type="reference" data-tooltip="https://en.wikipedia.org/wiki/High-dynamic-range_video" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_1_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_1" data-reference-link="true" aria-labelledby="ref_1">[1]</a></sup>
+                    </blockquote>
+                    <p>Above the whole thing is copied from Wikipedia. I kept the original reference in case you want to look into those yourself. I am very sorry if that makes the whole reference thing messy.</p>
+                    <p>2. <b>Transfer function</b></p>
+                    <p><b>To better understand this part, reading the stand BT.2100 (</b>especially Annex 1<b>) is highly recommended.</b><sup data-text="ITU BT. 2100" data-url="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2100-2-201807-I" data-numero="2" data-draft-node="inline" data-draft-type="reference" data-tooltip="ITU BT. 2100 https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2100-2-201807-I" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_2_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_2" data-reference-link="true" aria-labelledby="ref_2">[2]</a></sup></p>
+                    <p>Before understanding what is a transfer function, one may ask why we need to know about transfer function and why I have never heard of it when I am dealing with SDR videos. To answer that, we need to know the whole television system is trying to represent the light in a real scene. And that:</p>
+                    <blockquote>In television systems the displayed light is not linearly related to the light captured by the camera.</blockquote>
+                    <p>So there is a map from the scene light to the display (e.g. HDR TV). This function is called the opto-electronic transfer function (OOTF). And since we need to record the scene light electronically, we also have:</p>
+                    <blockquote>OETF: the opto-electronic transfer function, which converts linear scene light into the video signal, typically within a camera.
+                        <br>EOTF: electro-optical transfer function, which converts the video signal into the linear light output of the display.
+                        <br>OOTF: opto-optical transfer function, which has the role of applying the &ldquo;rendering intent&rdquo;.
+                    </blockquote>
+                    <p>So the following plots explain the procedure:</p>
+                    <figure data-size="normal">
+                        <img src="https://pic1.zhimg.com/80/v2-3b86f059ce00d3bb583061bb72dac6f8_1440w.jpg" data-size="normal" data-rawwidth="1059" data-rawheight="490" width="90%" data-original="https://pic1.zhimg.com/v2-3b86f059ce00d3bb583061bb72dac6f8_r.jpg" data-actualsrc="https://pic1.zhimg.com/v2-3b86f059ce00d3bb583061bb72dac6f8_b.jpg" data-lazy-status="ok">
+                        <figcaption>An overall non-linearity is applied, the OOTF. The &ldquo;reference&rdquo; OOTF compensates for the difference in tonal perception between the environment of the camera and that of the display. Specification and use of a &ldquo;reference OOTF&rdquo; allows consistent end-to-end image reproduction.</figcaption>
+                    </figure>
+                    <figure data-size="normal">
+                        <img src="https://pic3.zhimg.com/80/v2-792ca6d0f50011fce6aa5675cd80c102_1440w.jpg" data-size="normal" data-rawwidth="90%" data-rawheight="90%" width="90%" data-original="https://pic3.zhimg.com/v2-792ca6d0f50011fce6aa5675cd80c102_r.jpg" data-actualsrc="https://pic3.zhimg.com/v2-792ca6d0f50011fce6aa5675cd80c102_b.jpg" data-lazy-status="ok">
+                        <figcaption>This explains the relationship between EOTF, inverse EOTF and OOTF. Note that the inverse EOTF is not equal to the OETF. Rather, the OETF is the OOTF and the Inverse EOTF combined.</figcaption>
+                    </figure>
+                    <p>One thing to point out, the EOTF and OETF can be applied on each RGB channel as well as luma.</p>
+                    <p>There are only two sets of transfer functions that are widely used: the PQ transfer function, and the HLG transfer function. There are tons of resources that can tell you how they are defined. Again, the BT. 2100 <sup data-text="" data-url="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2100-2-201807-I" data-numero="3" data-draft-node="inline" data-draft-type="reference" data-tooltip="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2100-2-201807-I" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_3_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_3" data-reference-link="true" aria-labelledby="ref_3">[3]</a></sup>is the best to read.</p>
+                    <p><b>Handling transfer functions</b></p>
+                    <ul>
+                        <li>Note that Matlab has an implementation of the transferfuntion.</li>
+                        <li>Another good library to use is Colour-science lib. 
+                            <sup data-text="" data-url="https://colour.readthedocs.io/en/latest/tutorial.html" data-numero="4" data-draft-node="inline" data-draft-type="reference" data-tooltip="https://colour.readthedocs.io/en/latest/tutorial.html" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_4_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_4" data-reference-link="true" aria-labelledby="ref_4">[4]</a></sup>
+                        </li>
+                        <li>Besides the transfer function, Colour-science also has lots of other powerful tools.</li>
+                    </ul>
+                    <p>3. <b>Wide color gamut (WCG) and BT.2020 colorspace.</b></p>
+                    <p>In the setting of SDR content, when we talk about RGB, we are talking about exclusively sRGB (BT.709) color space. In the setting of HDR videos, it&apos;s likely we are talking about the BT.2020 RGB colorspace (as recommended in BT.2100, that&apos;s why WCG is closely related with HDR). There is really not too much to explain for this colorspace, to learn more, read Wikipedia<sup data-text="" data-url="https://en.wikipedia.org/wiki/Rec._2020" data-numero="5" data-draft-node="inline" data-draft-type="reference" data-tooltip="https://en.wikipedia.org/wiki/Rec._2020" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_5_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_5" data-reference-link="true" aria-labelledby="ref_5">[5]</a></sup>.</p>
+                    <p><b>RGB and luma-chroma formats (YUV for BT.2020)</b></p>
+                    <p>The first thing I got confused about is that most HDR videos are recorded in the YUV pixel format. It turns out the term &quot;YUV&quot; is misleading in certain ways<sup data-text="" data-url="https://trac.ffmpeg.org/wiki/colorspace" data-numero="6" data-draft-node="inline" data-draft-type="reference" data-tooltip="https://trac.ffmpeg.org/wiki/colorspace" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_6_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_6" data-reference-link="true" aria-labelledby="ref_6">[6]</a></sup>.</p>
+                    <blockquote>The term &quot;YUV&quot; is ambiguous and often used wrongly, including the definition of pixel formats in FFmpeg. A more accurate term for how color is stored in digital video would be 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/YCbCr" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">​YCbCr</a>. Y&apos;UV on other other hand specifies a colorspace consisting of luma (Y&apos;) and chrominance (UV) components. For more info read 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/YUV" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">​the respective Wikipedia article</a>.
+                    </blockquote>
+                    <p>So in short <b>YUV refers to the YCbCr </b>luma-chroma formats. And YCbCr is defined differently for sRGB and BT.2020 RGB<sup data-text="" data-url="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2020-0-201208-S" data-numero="7" data-draft-node="inline" data-draft-type="reference" data-tooltip="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2020-0-201208-S" data-tooltip-preset="white" data-tooltip-classname="ztext-referene-tooltip"><a id="ref_7_0" href="https://zhuanlan.zhihu.com/p/299009031#ref_7" data-reference-link="true" aria-labelledby="ref_7">[7]</a></sup>.</p>
+                    <p>4. <b>HDR standards</b></p>
+                    <p>After understanding the above, you are prepared to know how the standard are defined. The standard is more like an industrial implement. The common ones are <b>HDR10, HDR10+</b> and <b>Dolby Vision. </b>They tell you what transfer function use and what to put into the metadata.</p>
+                    <p>For example, HDR10 = SMPTE ST 2084 (PQ) + wide-gamut <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Rec._2020" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Rec. 2020</a>color space +10-bits + static metadata. This is an entry-level standard and is basically supported by everything that claims to support HDR.</p>
+                    <blockquote>
+                        <b>HDR10 Media Profile</b>, more commonly known as 
+                        <b>HDR10</b>, was announced on August 27, 2015, by the
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Consumer_Technology_Association" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Consumer Technology Association</a>and uses the wide-gamut 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Rec._2020" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Rec. 2020</a> color space, a 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Color_depth" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">bit depth</a> of 10-bits, and the SMPTE ST 2084 (PQ) transfer function &ndash; a combination later also standardized in 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/ITU-R_BT.2100" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">ITU-R BT.2100</a>. 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-HDRCompatibleCEA2015-45" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[45]</a> It also uses SMPTE ST 2086 &quot;Mastering Display Color Volume&quot; static metadata to send color calibration data of the mastering display, such as MaxFALL (Maximum Frame Average Light Level) and MaxCLL (Maximum Content Light Level) static values, encoded as SEI messages within the video stream. HDR10 is an open standard supported by a wide variety of companies, which include monitor and TV manufacturers such as Dell, LG, Samsung, Sharp, VU, Sony, and Vizio,
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-HDR10DolbyVisionMay2016-46" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[46]</a>
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/High-dynamic-range_video%23cite_note-VizioHDR10August2016-47" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">[47]</a> as well as 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Sony_Interactive_Entertainment" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Sony Interactive Entertainment</a>, 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Microsoft" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Microsoft</a>and 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Apple_Inc." target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Apple</a> which support HDR10 on their 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/PlayStation_4" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">PlayStation 4</a>,
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Xbox_One" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Xbox One</a> 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Video_game_console" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">video game console</a> and 
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Apple_TV" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Apple TV</a> platforms, respectively. ---From Wikipedia.
+                    </blockquote>
+                    <p>To be continued...</p>
+                </div>
+            </div>             
+            <!-- Footer -->             
+            <footer id="footer"> 
+                <div class="inner"> 
+                    <section> 
+                        <h2>Get in touch</h2> 
+                        <form method="post" action="#"> 
+                            <div class="fields"> 
+                                <div class="field half"> 
+                                    <input type="text" name="name" id="name" placeholder="Name"/> 
+                                </div>                                 
+                                <div class="field half"> 
+                                    <input type="email" name="email" id="email" placeholder="Email"/> 
+                                </div>                                 
+                                <div class="field"> 
+                                    <textarea name="message" id="message" placeholder="Message"></textarea> 
+                                </div>                                 
+                            </div>                             
+                            <ul class="actions"> 
+                                <li>
+                                    <input type="submit" value="Send" class="primary"/>
+                                </li>                                 
+                            </ul>                             
+                        </form>                         
+                    </section>                     
+                    <section> 
+                        <h2>Follow</h2> 
+                        <ul class="icons"> 
+                            <li>
+                                <a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a>
+                            </li>                             
+                            <li>
+                                <a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a>
+                            </li>                             
+                        </ul>                         
+                    </section>                     
+                    <ul class="copyright"> 
+                        <li>&copy; Untitled. All rights reserved</li>
+                        <li>Design: 
+                            <a href="http://html5up.net">HTML5 UP</a>
+                        </li>                         
+                    </ul>                     
+                </div>                 
+            </footer>             
+        </div>         
+        <!-- Scripts -->         
+        <script src="assets/js/jquery.min.js"></script>         
+        <script src="assets/js/browser.min.js"></script>         
+        <script src="assets/js/breakpoints.min.js"></script>         
+        <script src="assets/js/util.js"></script>         
+        <script src="assets/js/main.js"></script>         
+    </body>     
+</html>
